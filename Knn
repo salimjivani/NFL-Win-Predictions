@@ -1,0 +1,6 @@
+from sklearn.neighbors import KNeighborsClassifier
+def knneighbor (X,y, test_x):
+  knn = KNeighborsClassifier()
+  knn.fit(X,y)
+  pred = knn.predict(test_x)
+  return pred
