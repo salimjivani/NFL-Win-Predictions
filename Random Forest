@@ -1,0 +1,13 @@
+from sklearn.ensemble import RandomForestClassifier
+
+def randomforest( X, y, test_x):
+  rf= RandomForestClassifier(
+      n_samples=1000, n_features=4,
+      n_informative=2, n_redundant=0,
+      random_state=0, shuffle=False
+      )
+  rf.fit(X,y)
+  #prediction
+  clf = RandomForestClassifier (max_depth=2, random_state=0)
+  predictions = clf.predict(test_x)
+  return predictions
