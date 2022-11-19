@@ -1,6 +1,14 @@
 from sklearn.neighbors import KNeighborsClassifier
-def knneighbor (X,y, test_x):
-  knn = KNeighborsClassifier()
-  knn.fit(X,y)
-  pred = knn.predict(test_x)
+from sklearn.metrics import accuracy_score
+
+def knneighbor (X,y):
+  X_train, X_test, y_train, y_test = train_test_split(X,y,test_size=0.25,random_state=42)
+  knn = KNeighborsClassifier(n_neighbors=3)
+  knn.fit(X_train,y_train)
+  # Predicting results using Test data set
+  pred = knn.predict(X_test)
+  accuracy_score(pred,y_test)
+  print('Accuracy\n',accuracy_score(y_test, pred))
+  print('\nKNN confusion matrix\n', confusion_matrix(y_test, pred))
+  print('\nKNN classification_report\n', classification_report(y_test, pred))
   return pred
